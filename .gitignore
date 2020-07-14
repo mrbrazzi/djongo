@@ -1,6 +1,8 @@
 dist/
 build/
 venv/
+venv3.8/
+venv_py38_dj30/
 .idea/
 .tox/
 *__pycache__*
@@ -19,9 +21,10 @@ docs/assets/js/*
 !docs/assets/js/jquery.liquid-slider.min.js
 !docs/assets/js/jquery.touchSwipe.min.js
 !docs/assets/js/jquery.easing.min.js
+tests/logs
 
 Gemfile.lock
-minimal-mistakes
+upload.sh
 
 !docs/_includes/footer.html
 !docs/_includes/masthead.html

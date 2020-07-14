@@ -1,9 +1,9 @@
 ---
-title: Different ways to integrate Django with MongoDB
-permalink: /different-ways-to-integrate-django-with-mongodb/
+title: Djongo vs Others
+permalink: /djongo-comparison/
 ---
 
-This article describes how to integrate MongoDB with Django with focus on Djongo. It describes the Django ORM internal implementation that is not covered by the [Django documentation](https://docs.djangoproject.com/en/dev/). If you have not yet checked out the [introduction to Djongo](https://nesdis.github.io/djongo/), be sure to do so! 
+This page describes how to integrate MongoDB with Django with focus on Djongo. It describes the Django ORM internal implementation that is not covered by the [Django documentation](https://docs.djangoproject.com/en/dev/). If you have not yet checked out the [introduction to Djongo](https://nesdis.github.io/djongo/), be sure to do so first! 
 
 There are different ways to integrate MongoDB with Django, each with positives and negatives. Insights into the Django ORM design will help understand ways to integrate MongoDB and Django. 
 
@@ -47,10 +47,6 @@ Object Document Mapping (ODM) is the Object Relational Mapping (ORM) for non-rel
 
 [Django-nonrel](https://github.com/django-nonrel/django) aims to integrate Django and MongoDB but is not up to date with the latest version of Django.
 
-### django-mongo-engine
-
-[MongoEngine](https://github.com/MongoEngine/mongoengine) is a Python Object-Document Mapper for working with MongoDB. [Django support in MongoEngine](https://mongoengine-odm.readthedocs.io/django.html) is split from the main MongoEngine repository for working with Django. 
-
 ## Django SQL to MongoDB transpiler
 
 A different approach is to translate Django SQL query syntax into pymongo commands.
@@ -69,7 +65,7 @@ This has several advantages
  
  As **SQL syntax will never change** regardless of future additions to Django, by using Djongo your code is now future proof!  
   
-### Stop the immigrations
+### Goodbye migrations 
  
 MongoDB is a [schema free](https://docs.mongodb.com/manual/data-modeling/) DB. You no longer need to run <code> manage.py migrate</code> every time you change a model. Making changes to your models is easier.
   

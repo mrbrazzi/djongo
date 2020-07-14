@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import shutil
 import subprocess
@@ -14,7 +15,6 @@ TEST_DIR = os.path.dirname(os.path.realpath(__file__))
 def remove_migrations(path):
     if 'migrations' in os.listdir(path):
         shutil.rmtree(os.path.join(path, 'migrations'))
-        print('Migrations removed')
 
 
 def run_test_sqlparsing():
@@ -31,22 +31,26 @@ def run_commands(path):
 
     manage_py = os.path.join(path, "manage.py")
     cmds = [
-        'makemigrations main_test',
+        'makemigrations xtest_app',
         'migrate',
         'inspectdb',
-        'test main_test.tests.test_models'
     ]
 
-    settings = '--settings=test_project.settings.settings_precheckin'
+    settings = '--settings=test_project.settings.settings_loaded'
     for cmd in cmds:
         print(f'python {manage_py} {cmd} {settings}')
         subprocess.run(f'python {manage_py} {cmd} {settings}'.split(), check=True)
+
+    settings = '--settings=test_project.settings.settings_lite'
+    cmd = 'test xtest_app.tests.test_models'
+    print(f'python {manage_py} {cmd} {settings}')
+    subprocess.run(f'python {manage_py} {cmd} {settings}'.split(), check=True)
 
 
 if __name__ == '__main__':
     run_test_sqlparsing()
     app_root = os.path.join(TEST_DIR, 'djongo_tests', 'test_project')
-    main_test_app = os.path.join(app_root, 'main_test')
+    main_test_app = os.path.join(app_root, 'xtest_app')
     remove_migrations(main_test_app)
     run_commands(app_root)
     print('Precheckin DONE')
